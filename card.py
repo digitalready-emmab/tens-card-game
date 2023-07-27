@@ -42,13 +42,13 @@ class Card():
             raise Exception("Invalid Suit")
 
         if self.value == 11:
-            val = "J"
+            val = "J(11)"
         elif self.value == 12:
-            val = "Q"
+            val = "Q(12)"
         elif self.value == 13:
-            val = "K"
+            val = "K(13)"
         elif self.value == 1:
-            val = "A"
+            val = "A(1)"
         else: val = self.value
 
         return f"{symbol}{val}"
