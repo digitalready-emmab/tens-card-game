@@ -47,23 +47,28 @@ import random
 # Create a deck of random-numbered cards from 1-13
 def deck_of_cards():
     return list(range(1,53))
+
 # Create 5 random-numbered cards from 1-13
 def your_cards():
-    random = rand.int(1,13)
-    return list(range.randint(6))
+    the_cards = Card.new_deck()
+    the_cards[0:4]
+
 # Display 5 random cards to Player and Computer
 def show_cards():
-    print
+    print (your_cards)
+
 # Take a user's input to retrieve a card from the deck
 def user_input():
     while True:
-        user = input('Select a card that is a multiple of 10: ' + your_cards)
-        if user.isnumeric() and int(user) == :
-# Allow Computer to retrieve a card from the deck    
+        user = input('Select a card that can create a multiple of 10: ' + Card.new_deck())
+        if user.isnumeric():
+        your_cards.pop(user)
 
+        
+# Allow Computer to retrieve a card from the deck    
 def comp_turn():
     draw_deck= random.choice((deck_of_cards))
-    comp_card=
+    
 
 # Program your game here!
 def tens_card_game():
@@ -72,6 +77,9 @@ def tens_card_game():
 
 # Code that runs when script is called from terminal
 # ex: python my_card_game.py
+turn_number = 1
+whos_turn = ' '
+
 if __name__ == "__main__":
     tens_card_game()
 
@@ -79,9 +87,17 @@ class Player():
     def __init__(self,name,hand):
         self.name = name
         self.hand = hand
-player = Player.Player("user",Card.new_deck()[0:5])
+
+class User(Player):
+    pass
+
+player = Player(input("What is your name? "), Card.new_deck()[0:5])
+print(player.__dict__)
 
 class Computer(Player):
-    def move(self,pile):
-        return None
-computer = Player.Player("computer",Card.new_deck()[6:10])
+    def __init__(self,name,hand):
+        self.name = name
+        self.hand = hand
+computer = Computer("Computer", Card.new_deck()[6:10])
+print(computer.__dict__)
+
