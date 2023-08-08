@@ -46,7 +46,7 @@ import random
 
 # Create a deck of random-numbered cards from 1-13
 def deck_of_cards():
-    return list(range(1,53))
+    return Card.new_deck()
 
 # Create 5 random-numbered cards from 1-13
 def your_cards():
@@ -60,14 +60,16 @@ def show_cards():
 # Take a user's input to retrieve a card from the deck
 def user_input():
     while True:
-        user = input('Select a card that can create a multiple of 10: ' + Card.new_deck())
+        user = input('Select a card that can create a multiple of 10: ' + deck_of_cards())
         if user.isnumeric():
-        your_cards.pop(user)
+            your_cards.pop(user)
 
         
 # Allow Computer to retrieve a card from the deck    
 def comp_turn():
     draw_deck= random.choice((deck_of_cards))
+      
+    print ('Computer chose: ' + draw_deck + 'from the deck!')
     
 
 # Program your game here!
@@ -78,7 +80,9 @@ def tens_card_game():
 # Code that runs when script is called from terminal
 # ex: python my_card_game.py
 turn_number = 1
-whos_turn = ' '
+whose_turn = ' '
+computer_calculate = False
+player_calculate = False
 
 if __name__ == "__main__":
     tens_card_game()
@@ -98,6 +102,28 @@ class Computer(Player):
     def __init__(self,name,hand):
         self.name = name
         self.hand = hand
-computer = Computer("Computer", Card.new_deck()[6:10])
+computer = Computer("Computer", Card.new_deck()[6:11])
 print(computer.__dict__)
 
+def turn_check():
+    if turn_number % 2 == 0:
+        whose_turn = 'player'
+    else:
+        whose_turn = 'computer'
+    print(whose_turn)
+def turn_on_calculations():
+    if whose_turn == 'computer':
+        computer_calculate = True
+    elif whose_turn == 'player':
+        player_calculate = True
+
+def draw():
+    if whose_turn == 'computer':
+        computer.hand.append(Card.new_deck()[1])
+        print(computer.__dict__)
+
+def calculate(a,s,m,d):
+    if computer_calculate == True:
+        pass
+turn_check()
+draw()
