@@ -47,30 +47,28 @@ import random
 # Create a deck of random-numbered cards from 1-13
 def deck_of_cards():
     return Card.new_deck()
-
 # Create 5 random-numbered cards from 1-13
 def your_cards():
-    the_cards = Card.new_deck()
-    the_cards[0:4]
+    my_card = random.randint(1,13)
+    return
 
+    # deck = Card.new_deck()
+    # player.hand = deck[0:5]
+    # deck.remove(0, 5) 
+    
 # Display 5 random cards to Player and Computer
 def show_cards():
-    print (your_cards)
-
+    print 
 # Take a user's input to retrieve a card from the deck
 def user_input():
     while True:
-        user = input('Select a card that can create a multiple of 10: ' + deck_of_cards())
-        if user.isnumeric():
-            your_cards.pop(user)
-
-        
+        user = input('Select a card that is a multiple of 10: ' + your_cards)
+        if user.isnumeric() and int(user) == 0:
+            pass
 # Allow Computer to retrieve a card from the deck    
+
 def comp_turn():
     draw_deck= random.choice((deck_of_cards))
-      
-    print ('Computer chose: ' + draw_deck + 'from the deck!')
-    
 
 # Program your game here!
 def tens_card_game():
@@ -79,11 +77,6 @@ def tens_card_game():
 
 # Code that runs when script is called from terminal
 # ex: python my_card_game.py
-turn_number = 1
-whose_turn = ' '
-computer_calculate = False
-player_calculate = False
-
 if __name__ == "__main__":
     tens_card_game()
 
@@ -91,39 +84,9 @@ class Player():
     def __init__(self,name,hand):
         self.name = name
         self.hand = hand
-
-class User(Player):
-    pass
-
-player = Player(input("What is your name? "), Card.new_deck()[0:5])
-print(player.__dict__)
+player = Player.Player("user",Card.new_deck()[0:5])
 
 class Computer(Player):
-    def __init__(self,name,hand):
-        self.name = name
-        self.hand = hand
-computer = Computer("Computer", Card.new_deck()[6:11])
-print(computer.__dict__)
-
-def turn_check():
-    if turn_number % 2 == 0:
-        whose_turn = 'player'
-    else:
-        whose_turn = 'computer'
-    print(whose_turn)
-def turn_on_calculations():
-    if whose_turn == 'computer':
-        computer_calculate = True
-    elif whose_turn == 'player':
-        player_calculate = True
-
-def draw():
-    if whose_turn == 'computer':
-        computer.hand.append(Card.new_deck()[1])
-        print(computer.__dict__)
-
-def calculate(a,s,m,d):
-    if computer_calculate == True:
-        pass
-turn_check()
-draw()
+    def move(self,pile):
+        return None
+computer = Player.Player("computer",Card.new_deck()[6:10])
